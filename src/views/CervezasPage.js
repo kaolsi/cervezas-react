@@ -35,8 +35,12 @@ export default class CervezasPage extends Component {
   handleFilter = searchText =>{
     const {cervezas} = this.state
     const aux = cervezas.filter(cerveza=>{
-
-      return cerveza.nombre.toUpperCase().includes(searchText.toUpperCase()) || cerveza.descripción.toUpperCase().includes(searchText.toUpperCase())
+      //COn some solo con que uno de los elementos coincida, ya funciona
+      //DEberíamos usar un eliminador de stopwords
+      searchText.split(' ').some(palabra=>{
+        return cerveza.nombre.toUpperCase().includes(palabra.toUpperCase()) || cerveza.descripción.toUpperCase().includes(palabra.toUpperCase())
+      })
+      //return cerveza.nombre.toUpperCase().includes(searchText.toUpperCase()) || cerveza.descripción.toUpperCase().includes(searchText.toUpperCase())
     })
     this.setState({cervezasfiltradas: aux})
   }
