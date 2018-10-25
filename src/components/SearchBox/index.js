@@ -20,6 +20,7 @@ export default class SearchBox extends Component {
     }*/
     //this.setState({busqueda: texto})
     this.setState({disabled: texto ? false:true, busqueda: texto})
+    this.props.filter(this.state.busqueda)
   }
   handleSubmit= evento =>{
     //Evitamos que nos envíe a otra URL

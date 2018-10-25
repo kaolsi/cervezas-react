@@ -35,7 +35,8 @@ export default class CervezasPage extends Component {
   handleFilter = searchText =>{
     const {cervezas} = this.state
     const aux = cervezas.filter(cerveza=>{
-      return cerveza.nombre.includes(searchText) || cerveza.descripción.includes(searchText)
+
+      return cerveza.nombre.toUpperCase().includes(searchText.toUpperCase()) || cerveza.descripción.toUpperCase().includes(searchText.toUpperCase())
     })
     this.setState({cervezasfiltradas: aux})
   }
